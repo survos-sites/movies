@@ -1,35 +1,94 @@
 # movies/config/packages/survos_meili.yaml
 survos_meili:
     enabled: true
+
     apiKey: '%env(default::MEILI_API_KEY)%'
     searchKey: '%env(default::MEILI_SEARCH_KEY)%'
     meiliPrefix: '%env(default::MEILI_PREFIX)%'
     passLocale: false
     maxValuesPerFacet: 1200
-    embedders:
-        small: # for testing, as cheap as possible
-            source: 'openAi'
-            model: 'text-embedding-3-small' # 2 cents/million tokens
-            apiKey: '%env(OPENAI_API_KEY)%'
-            template: 'templates/liquid/movie.liquid'
 
-        best: # for production if budget allows
-            source: 'openAi'
-            model: 'text-embedding-3-large' # 13 cents/million tokens
+    #
+    # Embedders: named configurations MeiliService/SettingsCommand will use.
+    # documentTemplateMaxBytes is per-doc Liquid template size; 4K is fine for your WAM templates.
+    # maxTokensPerDoc is *your* hint for estimator / guard rails, not enforced by Meili.
+    #
+    embedders:
+        small:          # movie index, cheap/default
+            source: openAi
+            model: text-embedding-3-small      # $0.02 / 1M tokens
             apiKey: '%env(OPENAI_API_KEY)%'
             template: 'templates/liquid/movie.liquid'
-        small_film: # for production if budget allows
-            source: 'openAi'
-            model: 'text-embedding-3-small' # 13 cents/million tokens
+            documentTemplateMaxBytes: 4096
+            maxTokensPerDoc: 1024
+
+        best:           # movie index, higher quality
+            source: openAi
+            model: text-embedding-3-large      # $0.13 / 1M tokens
+            apiKey: '%env(OPENAI_API_KEY)%'
+            template: 'templates/liquid/movie.liquid'
+            documentTemplateMaxBytes: 4096
+            maxTokensPerDoc: 2048
+
+        small_film:     # film index
+            source: openAi
+            model: text-embedding-3-small
             apiKey: '%env(OPENAI_API_KEY)%'
             template: 'templates/liquid/film.liquid'
-        small_wam: # for production if budget allows
-            source: 'openAi'
-            model: 'text-embedding-3-small' # 13 cents/million tokens
+            documentTemplateMaxBytes: 4096
+            maxTokensPerDoc: 1024
+
+        small_wam:      # WAM Dwyer collection (cheap)
+            source: openAi
+            model: text-embedding-3-small
             apiKey: '%env(OPENAI_API_KEY)%'
             template: 'templates/liquid/wam.liquid'
-        large_wam: # for production if budget allows
-            source: 'openAi'
-            model: 'text-embedding-3-large' # 13 cents/million tokens
+            documentTemplateMaxBytes: 4096
+            maxTokensPerDoc: 1024
+
+        large_wam:      # WAM Dwyer collection (best)
+            source: openAi
+            model: text-embedding-3-large
             apiKey: '%env(OPENAI_API_KEY)%'
             template: 'templates/liquid/wam.liquid'
+            documentTemplateMaxBytes: 4096
+            maxTokensPerDoc: 2048
+
+    #
+    # Pricing table for meili:estimate — cost per 1M tokens, keyed by embedding model.
+    #
+    pricing:
+        embedders:
+            text-embedding-3-small: 0.02    # $0.02 / 1M tokens
+            text-embedding-3-large: 0.13    # $0.13 / 1M tokens
+            text-embedding-ada-002: 0.10    # legacy approx, if you ever use it
+
+    #
+    # Optional default Meili settings you can push into indexes (SettingsService/SettingsCommand).
+    # Mirrors Meilisearch's own settings structure, but is just config until you wire it in.
+    #
+    meili_settings:
+        typoTolerance:
+            enabled: true
+            oneTypo: 5
+            twoTypos: 9
+            disableOnWords: []
+            disableOnAttributes: []
+            disableOnNumbers: false
+
+        faceting:
+            maxValuesPerFacet: 1200
+            sortFacetValuesBy:
+                '*': 'count'
+
+        pagination:
+            maxTotalHits: 1000
+
+        facetSearch: true
+        prefixSearch: 'indexingTime'
+
+    #
+    # Where to scan for #[MeiliIndex] entities (default is fine unless you move entities).
+    #
+    entity_dirs:
+        - '%kernel.project_dir%/src/Entity'

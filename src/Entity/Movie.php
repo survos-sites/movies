@@ -22,6 +22,7 @@ use Survos\MeiliBundle\Metadata\MeiliIndex;
     searchable: ['title','overview'],
     filterable: ['year', 'budget', 'genres'],
     sortable: ['year', 'budget'],
+//    embedders: ['small','best']
 )]
 final class Movie
 {
@@ -68,6 +69,6 @@ final class Movie
     #[Facet(widget: FacetWidget::RangeSlider)]
 	public ?int $budget = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $posterUrl = null;
 }

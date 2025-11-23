@@ -166,4 +166,21 @@ return [
         'version' => '5.3.8',
         'type' => 'css',
     ],
+    'reveal.js' => [
+        'version' => '5.2.1',
+    ],
+    'reveal.js/plugin/highlight/highlight.js' => [
+        'version' => '5.2.1',
+    ],
+    'reveal.js/dist/reveal.js' => [
+        'version' => '5.2.1',
+    ],
+    'reveal.js/dist/reveal.css' => [
+        'version' => '5.2.1',
+        'type' => 'css',
+    ],
+    'reveal.js/dist/theme/black.css' => [
+        'version' => '5.2.1',
+        'type' => 'css',
+    ],
 ];

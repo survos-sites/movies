@@ -42,10 +42,10 @@ final class MetObject
 	#[Column(type: Types::BOOLEAN, nullable: true)]
 	public ?bool $isPublicDomain = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $primaryImage = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $primaryImageSmall = null;
 
 	#[Column(type: Types::JSON, options: ['jsonb' => true], nullable: true)]
@@ -108,10 +108,10 @@ final class MetObject
 	#[Column(length: 255, nullable: true)]
 	public ?string $artistGender = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $artistWikidataURL = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $artistULANURL = null;
 
 	#[Column(type: Types::INTEGER, nullable: true)]
@@ -183,13 +183,13 @@ final class MetObject
 	#[Column(length: 255, nullable: true)]
 	public ?string $repository = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $objectURL = null;
 
 	#[Column(type: Types::JSON, nullable: true, options: ['jsonb' => true])]
 	public ?array $tags = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $objectWikidataURL = null;
 
 	#[Column(type: Types::BOOLEAN, nullable: true)]

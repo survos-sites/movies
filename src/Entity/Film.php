@@ -73,6 +73,6 @@ final class Film
 	#[Column(type: Types::INTEGER, nullable: true)]
 	public ?int $budget = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
 	public ?string $posterUrl = null;
 }

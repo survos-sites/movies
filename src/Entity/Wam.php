@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
         groups: ['wam.searchable']
     ),
     filterable: ['keywords', 'condition', 'creator'],
-    embedders: ['small_wam', 'large_wam']
+    embedders: ['large_wam']
 )]
 final class Wam
 {
@@ -38,7 +38,7 @@ final class Wam
     #[Groups(['wam.read'])]
 	public ?string $url = null;
 
-	#[Column(length: 2048, nullable: true)]
+	#[Column(type: Types::TEXT,nullable: true)]
     #[Groups(['wam.read'])]
 	public ?string $wamImage = null;
 
@@ -51,7 +51,7 @@ final class Wam
 	#[Column(length: 255, nullable: true)]
 	public ?string $collection = null;
 
-	#[Column(length: 255, nullable: true)]
+	#[Column(type: Types::TEXT, nullable: true)]
     #[Groups(['wam.searchable'])]
 	public ?string $description = null;
 
@@ -62,7 +62,7 @@ final class Wam
 	#[Column(length: 255, nullable: true)]
 	public ?string $location = null;
 
-	#[Column(length: 255, nullable: true)]
+	#[Column(type: Types::TEXT, nullable: true)]
     #[Groups(['wam.searchable'])]
 	public ?string $notes = null;
 
@@ -74,7 +74,7 @@ final class Wam
 	#[Column(type: Types::JSON, options: ['jsonb' => true], nullable: true)]
 	public ?array $subject = null;
 
-//	#[Column(length: 2048, nullable: true)]
+//	#[Column(type: Types::TEXT,nullable: true)]
     // can't access this link
 	public ?string $thumbnail = null;
 
@@ -98,7 +98,7 @@ final class Wam
     #[Groups(['wam.read'])]
 	public ?string $mediumFormat = null;
 
-	#[Column(length: 255, nullable: true)]
+	#[Column(type: Types::TEXT, nullable: true)]
     #[Groups(['wam.read'])]
 	public ?string $notes2 = null;
 
