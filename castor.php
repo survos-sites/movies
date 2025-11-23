@@ -17,9 +17,6 @@ foreach ($autoloadCandidates as $autoload) {
     }
 }
 
-import('src/Command/LoadCongressCommand.php');
-import('src/Command/LoadDummyCommand.php');
-import('src/Command/JeopardyCommand.php');
 
 try {
     import('.castor/vendor/tacman/castor-tools/castor.php');
@@ -159,7 +156,7 @@ function load_database(
     //   - write JSONL to $dataset->jsonl (or derived from target)
     //   - write profile JSON alongside it
     $convertCmd = sprintf(
-        'bin/console import:convert %s --output=%s --tag=%s',
+        'bin/console import:convert %s --output=%s ',
         $dataset->target,
         $dataset->jsonl,
         $dataset->name
@@ -173,7 +170,7 @@ function load_database(
     // and that you've already generated the entity via code:entity.
     $limitArg = $limit ? sprintf(' --limit=%d', $limit) : '';
     $importCmd = sprintf(
-        'bin/console import:entities App\\Entity\\%s %s%s',
+        'bin/console import:entities App\\\\Entity\\\\%s %s%s',
         ucfirst($code),
         $dataset->jsonl,
         $limitArg
