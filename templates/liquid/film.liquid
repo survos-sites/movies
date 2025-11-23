@@ -1,0 +1,38 @@
+{%- comment -%} /templates/liquid/film.liquid {%- endcomment -%}
+{%- comment -%}
+  Plain-text summary for semantic embedding (OpenAI vectors).
+  Expects object "doc" with shape:
+  {
+    id, title, overview, genres[], director, actors[], characters[],
+    year, votes, rating, popularity, budget, posterUrl, popularityScore
+  }
+
+  NOTE: This uses Liquid syntax compatible with Meilisearch's template parser.
+  Avoid complex boolean expressions in `assign`. Use `if` block s and simple assigns.
+{%- endcomment -%}
+
+{{ doc.title }}{% if doc.year %} ({{ doc.year }}){% endif %}
+
+{% if doc.director %}Directed by {{ doc.director }}{% endif %}
+{% if doc.genres and doc.genres.size > 0 %}Genres: {{ doc.genres | join: ", " }}{% endif %}
+
+{%- assign actors_size = doc.actors | default: empty | size -%}
+{%- assign chars_size  = doc.characters | default: empty | size -%}
+
+{%- if actors_size > 0 and chars_size > 0 and actors_size == chars_size -%}
+Cast:
+{%- for a in doc.actors -%}
+- {{ a }} as {{ doc.characters[forloop.index0] }}
+{%- endfor -%}
+{%- elsif actors_size > 0 -%}
+Starring: {{ doc.actors | join: ", " }}
+{%- endif -%}
+
+{% if doc.overview %}{{ doc.overview }}{% endif %}
+
+{%- if doc.rating or doc.votes -%}
+Rating:{% if doc.rating %} {{ doc.rating }}/10{% endif %}{% if doc.votes %} ({{ doc.votes }} votes){% endif %}
+{%- endif -%}
+
+{% if doc.budget %}Budget: ${{ doc.budget }}{% endif %}
+{% if doc.popularityScore %}Popularity Score: {{ doc.popularityScore }}{% endif %}

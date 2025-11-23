@@ -1,0 +1,26 @@
+{%- comment -%}
+Auto-generated embedder template for index "movie".
+Edit this file to refine what goes into the embedding.
+Uses only Meilisearch-supported Liquid + compact Markdown.
+{%- endcomment -%}
+
+{%- assign title = doc.title -%}
+
+# {{ title }}
+
+{% if doc.overview %}
+{{ doc.overview }}
+{% endif %}
+
+{% if doc.year or doc.budget or doc.votes %}
+## Details
+{% if doc.year %}Year: {{ doc.year }}{% endif %}
+{% if doc.budget %}Budget: {{ doc.budget }}{% endif %}
+{% if doc.votes %}Votes: {{ doc.votes }}{% endif %}
+{% endif %}
+
+{% if doc.genres %}
+## Genres
+{{ doc.genres }}
+{% endif %}
+

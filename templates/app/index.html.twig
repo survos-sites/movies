@@ -1,0 +1,36 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title mb-0">
+                    <i class="fa fa-search"></i>
+                    Semantic Search Demo
+                </h3>
+            </div>
+            <div class="card-body">
+                <p class="lead mb-4">
+                    Pre-defined searches demonstrating semantic search capabilities using the 'small' embedder.
+                    Compare results with different semantic ratios (0.0 = keyword only, 1.0 = semantic only).
+                </p>
+
+                <div class="list-group">
+                    {% for term, reason in searchTerms %}
+                        <a href="{{ path('meili_insta_embed', {indexName: 'movie_movie', embedder: 'small', q: term}) }}"
+                           target="_blank"
+                           class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <i class="fa fa-search text-muted"></i>
+                                    "{{ term }}"
+                                </h5>
+                            </div>
+                            <p class="mb-1 text-muted small">{{ reason }}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
