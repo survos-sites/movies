@@ -26,7 +26,7 @@ try {
 }
 
 #[AsTask('congress:details', description: 'Fetch details from wikipedia')]
-function congress_details(): void
+function congress_details(bool $showStats): void
 {
     run('bin/console state:iterate Official --marking=new --transition=fetch_wiki');
     run('bin/console mess:stats');
@@ -71,7 +71,34 @@ function demo_datasets(): array
     ];
 }
 
-/**
+#[AsTask('download')]
+function download(?string $code=null): void
+{
+    $map = demo_datasets();
+    if ($code && !array_key_exists($code, $map)) {
+        io()->error("The code '{$code}' does not exist: " . implode('|', array_keys($map)));
+        return;
+    }
+    $datasets = $code ? [$map[$code]] : array_values($map);
+    foreach ($datasets as $dataset) {
+        // use fs()?
+        if ($dataset->url) {
+            if (!file_exists($dataset->target)) {
+                $dir = \dirname($dataset->target);
+                if ($dir !== '' && !\is_dir($dir)) {
+                    \mkdir($dir, 0777, true);
+                }
+
+                io()->writeln(sprintf('Downloading %s → %s', $dataset->url, $dataset->target));
+                http_download($dataset->url, $dataset->target);
+                io()->writeln(realpath($dataset->target) . ' written');
+            } else {
+                io()->writeln(sprintf('Target %s already exists, skipping download.', $dataset->target));
+            }
+        }
+    }
+}
+    /**
  * Loads the database for a given demo dataset:
  *   - downloads the raw dataset (if needed)
  *   - runs import:convert to produce JSONL + profile
@@ -83,44 +110,14 @@ function demo_datasets(): array
 function load_database(
     #[\Castor\Attribute\AsArgument(description: 'Dataset code (e.g. wcma|car|wine|marvel|wam)')]
     string $code = '',
-    #[Opt(description: 'Limit number of entities to import')]
+    #[\Castor\Attribute\AsOption(description: 'Limit number of entities to import')]
     ?int $limit = null,
 ): void {
     /** @var array<string, Dataset> $map */
     $map = demo_datasets();
 
-    if ($code === '') {
-        io()->writeln('Available dataset codes:');
-        foreach ($map as $k => $dataset) {
-            io()->writeln(sprintf('  - %s (%s)', $k, $dataset->target));
-        }
-
-        return;
-    }
-
-    if (!\array_key_exists($code, $map)) {
-        io()->error("The code '{$code}' does not exist: " . implode('|', array_keys($map)));
-
-        return;
-    }
-
     $dataset = $map[$code];
-
     // 1) Ensure raw data exists (download if URL is defined)
-    if ($dataset->url) {
-        if (!file_exists($dataset->target)) {
-            $dir = \dirname($dataset->target);
-            if ($dir !== '' && !\is_dir($dir)) {
-                \mkdir($dir, 0777, true);
-            }
-
-            io()->writeln(sprintf('Downloading %s → %s', $dataset->url, $dataset->target));
-            http_download($dataset->url, $dataset->target);
-            io()->writeln(realpath($dataset->target) . ' written');
-        } else {
-            io()->writeln(sprintf('Target %s already exists, skipping download.', $dataset->target));
-        }
-    }
 
     // 2) WAM special case: extract CSV from zip if needed.
     //
@@ -156,9 +153,8 @@ function load_database(
     //   - write JSONL to $dataset->jsonl (or derived from target)
     //   - write profile JSON alongside it
     $convertCmd = sprintf(
-        'bin/console import:convert %s --output=%s ',
+        'bin/console import:convert %s --dataset=%s ',
         $dataset->target,
-        $dataset->jsonl,
         $dataset->name
     );
     io()->writeln($convertCmd);
@@ -170,7 +166,7 @@ function load_database(
     // and that you've already generated the entity via code:entity.
     $limitArg = $limit ? sprintf(' --limit=%d', $limit) : '';
     $importCmd = sprintf(
-        'bin/console import:entities App\\\\Entity\\\\%s %s%s',
+        'bin/console import:entities App\\\\Entity\\%s %s%s',
         ucfirst($code),
         $dataset->jsonl,
         $limitArg

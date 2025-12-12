@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fa9355c6272766d82c1e2b455592ba9",
+    "content-hash": "b80ab40b217af552ada7b32f78f93ee3",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -2709,12 +2709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/meilisearch/meilisearch-php.git",
-                "reference": "4d9061839c57fc8e404cdc650fdc7f1b95d6d81d"
+                "reference": "2df206dc2f28e26290973446ac4f74388737a7f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/meilisearch/meilisearch-php/zipball/4d9061839c57fc8e404cdc650fdc7f1b95d6d81d",
-                "reference": "4d9061839c57fc8e404cdc650fdc7f1b95d6d81d",
+                "url": "https://api.github.com/repos/meilisearch/meilisearch-php/zipball/2df206dc2f28e26290973446ac4f74388737a7f8",
+                "reference": "2df206dc2f28e26290973446ac4f74388737a7f8",
                 "shasum": ""
             },
             "require": {
@@ -2746,7 +2746,6 @@
                     "src/functions.php"
                 ],
                 "psr-4": {
-                    "MeiliSearch\\": "src/",
                     "Meilisearch\\": "src/"
                 }
             },
@@ -2785,7 +2784,7 @@
                 "issues": "https://github.com/meilisearch/meilisearch-php/issues",
                 "source": "https://github.com/meilisearch/meilisearch-php/tree/main"
             },
-            "time": "2025-11-19T06:37:06+00:00"
+            "time": "2025-11-24T07:20:23+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4188,26 +4187,26 @@
         },
         {
             "name": "spatie/ssh",
-            "version": "1.13.0",
+            "version": "1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ssh.git",
-                "reference": "cfccf0873611a2d1b030f65d1dd319c8005d993f"
+                "reference": "3d2444f72d2c6ec4d12a8d2f03e0b6f5a06114e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ssh/zipball/cfccf0873611a2d1b030f65d1dd319c8005d993f",
-                "reference": "cfccf0873611a2d1b030f65d1dd319c8005d993f",
+                "url": "https://api.github.com/repos/spatie/ssh/zipball/3d2444f72d2c6ec4d12a8d2f03e0b6f5a06114e1",
+                "reference": "3d2444f72d2c6ec4d12a8d2f03e0b6f5a06114e1",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
-                "symfony/process": "^4.4|^5.3|^6.0|^7.0"
+                "symfony/process": "^4.4|^5.3|^6.0|^7.0|^8.0"
             },
             "require-dev": {
                 "pestphp/pest": "^1.22",
                 "spatie/pest-plugin-snapshots": "^1.1",
-                "symfony/var-dumper": "^5.3|6.0|^7.0"
+                "symfony/var-dumper": "^5.3|^6.0|^7.0|^8.0"
             },
             "type": "library",
             "autoload": {
@@ -4235,7 +4234,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ssh/issues",
-                "source": "https://github.com/spatie/ssh/tree/1.13.0"
+                "source": "https://github.com/spatie/ssh/tree/1.13.1"
             },
             "funding": [
                 {
@@ -4243,11 +4242,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-12-23T10:27:18+00:00"
+            "time": "2025-11-23T11:35:56+00:00"
         },
         {
             "name": "survos/core-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/core-bundle.git",
@@ -4329,7 +4328,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/core-bundle/issues",
-                "source": "https://github.com/survos/core-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/core-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -4341,7 +4340,7 @@
         },
         {
             "name": "survos/ez-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/ez-bundle.git",
@@ -4389,7 +4388,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/ez-bundle/issues",
-                "source": "https://github.com/survos/ez-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/ez-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -4401,16 +4400,16 @@
         },
         {
             "name": "survos/import-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/import-bundle.git",
-                "reference": "802c6e8984c87f93095a95be2a14c50632a4fc20"
+                "reference": "ac33689b7d75742e501d2118e02958af2010aed8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/import-bundle/zipball/802c6e8984c87f93095a95be2a14c50632a4fc20",
-                "reference": "802c6e8984c87f93095a95be2a14c50632a4fc20",
+                "url": "https://api.github.com/repos/survos/import-bundle/zipball/ac33689b7d75742e501d2118e02958af2010aed8",
+                "reference": "ac33689b7d75742e501d2118e02958af2010aed8",
                 "shasum": ""
             },
             "require": {
@@ -4449,7 +4448,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/import-bundle/issues",
-                "source": "https://github.com/survos/import-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/import-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -4457,7 +4456,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-22T23:01:53+00:00"
+            "time": "2025-11-23T12:26:38+00:00"
         },
         {
             "name": "survos/installer",
@@ -4524,16 +4523,16 @@
         },
         {
             "name": "survos/jsonl-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/jsonl-bundle.git",
-                "reference": "8eb7e2cd5a64889cb6cbd4783eb4d0fe54ddfafe"
+                "reference": "a68501cd21a0cd3e18ad0abf6d681ba8a0b455f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/jsonl-bundle/zipball/8eb7e2cd5a64889cb6cbd4783eb4d0fe54ddfafe",
-                "reference": "8eb7e2cd5a64889cb6cbd4783eb4d0fe54ddfafe",
+                "url": "https://api.github.com/repos/survos/jsonl-bundle/zipball/a68501cd21a0cd3e18ad0abf6d681ba8a0b455f7",
+                "reference": "a68501cd21a0cd3e18ad0abf6d681ba8a0b455f7",
                 "shasum": ""
             },
             "require": {
@@ -4571,7 +4570,7 @@
             "description": "Fast, concurrent, resumable, strictly-ordered JSONL ingestion utilities for Symfony 7.3 / PHP 8.4",
             "support": {
                 "issues": "https://github.com/survos/jsonl-bundle/issues",
-                "source": "https://github.com/survos/jsonl-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/jsonl-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -4579,20 +4578,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-22T20:21:03+00:00"
+            "time": "2025-11-23T13:12:05+00:00"
         },
         {
             "name": "survos/meili-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/meili-bundle.git",
-                "reference": "d5a2005ff1e136096eb8f483dd66cc1accd4183f"
+                "reference": "b4dff7fc7a03196e2f799add35ca060d5b56b236"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/meili-bundle/zipball/d5a2005ff1e136096eb8f483dd66cc1accd4183f",
-                "reference": "d5a2005ff1e136096eb8f483dd66cc1accd4183f",
+                "url": "https://api.github.com/repos/survos/meili-bundle/zipball/b4dff7fc7a03196e2f799add35ca060d5b56b236",
+                "reference": "b4dff7fc7a03196e2f799add35ca060d5b56b236",
                 "shasum": ""
             },
             "require": {
@@ -4654,7 +4653,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/meili-bundle/issues",
-                "source": "https://github.com/survos/meili-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/meili-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -4662,7 +4661,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-23T11:01:32+00:00"
+            "time": "2025-11-23T12:43:32+00:00"
         },
         {
             "name": "symfony/asset",
@@ -14098,16 +14097,16 @@
         },
         {
             "name": "survos/code-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/code-bundle.git",
-                "reference": "00ce3d22cdbf25c56188e497091b07d1c5178e94"
+                "reference": "30716b233542fd136c52c48d0f59322f5894ecd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/code-bundle/zipball/00ce3d22cdbf25c56188e497091b07d1c5178e94",
-                "reference": "00ce3d22cdbf25c56188e497091b07d1c5178e94",
+                "url": "https://api.github.com/repos/survos/code-bundle/zipball/30716b233542fd136c52c48d0f59322f5894ecd6",
+                "reference": "30716b233542fd136c52c48d0f59322f5894ecd6",
                 "shasum": ""
             },
             "require": {
@@ -14164,7 +14163,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/code-bundle/issues",
-                "source": "https://github.com/survos/code-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/code-bundle/tree/2.0.71"
             },
             "funding": [
                 {
@@ -14172,11 +14171,11 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-23T09:31:38+00:00"
+            "time": "2025-11-23T12:26:36+00:00"
         },
         {
             "name": "survos/deployment-bundle",
-            "version": "2.0.69",
+            "version": "2.0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/deployment-bundle.git",
@@ -14224,7 +14223,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/deployment-bundle/issues",
-                "source": "https://github.com/survos/deployment-bundle/tree/2.0.69"
+                "source": "https://github.com/survos/deployment-bundle/tree/2.0.71"
             },
             "funding": [
                 {

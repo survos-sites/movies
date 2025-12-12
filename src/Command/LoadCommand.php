@@ -14,7 +14,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-#[AsCommand('app:load', 'Load the movies database')]
+#[AsCommand('load:movies', 'Load the movies database')]
 class LoadCommand
 {
 	public function __construct(
