@@ -19,6 +19,8 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-.castor.stub.php
+/data
 
 .castor.stub.php
+config.bat
+node_modules

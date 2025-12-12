@@ -1,5 +1,8 @@
 # Movies
 
+DEPRECATED: Moved to meili 
+
+
 c import:entities App\\Entity\\Movie --file data/movies.csv
 c import:entities App\\Entity\\Wam --file data/wam/raw/wam-dywer.csv
 
